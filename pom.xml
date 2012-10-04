@@ -21,6 +21,7 @@
     <module>handlebars-humanize</module>
     <module>handlebars-proto</module>
     <module>handlebars-parboiled-processor</module>
+    <module>handlebars-antlr3</module>
   </modules>
 
   <licenses>
