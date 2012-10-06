@@ -48,16 +48,8 @@
           <regex>false</regex>
           <replacements>
             <replacement>
-              <token>public final void mTEXT</token>
-              <value>public void mTEXT</value>
-            </replacement>
-            <replacement>
-              <token>public final void mOPEN</token>
-              <value>public void mOPEN</value>
-            </replacement>
-            <replacement>
-              <token>public final void mCLOSE</token>
-              <value>public void mCLOSE</value>
+              <token>public final void m</token>
+              <value>public void m</value>
             </replacement>
           </replacements>
         </configuration>
