@@ -14,14 +14,26 @@ public class HbsRunner {
    * @throws RecognitionException
    */
   public static void main(final String[] args) throws RecognitionException {
-    run("<ul>{{#links}}<li>{{{this}}}</li>{{/links}}</ul>");
+    run("Hello {{this}}!");
+
+    run("Block {{#world}}!{{/world}}");
+
+    run("Delimiters {{=<< >>=}}\n<<#world>> aja <</world>>{{html}}!");
+
+    run("IF/ELSE {{#world}}...{{else}}***{{/world}}");
+
+    run("Unescaped {{{world}}}");
+
+    run("Unescaped {{&world}}");
+
+    run("Comment {{! ... world ... }}");
   }
 
   private static void run(final String input) throws RecognitionException {
     ANTLRStringStream stream = new ANTLRStringStream(input);
     System.err.println(stream);
 
-    HbsMutableLexer lexer = new HbsMutableLexer(stream);
+    HbsLexer lexer = new HbsLexer(stream);
 
     CommonTokenStream tokenStream = new CommonTokenStream(lexer);
 

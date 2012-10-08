@@ -35,7 +35,7 @@
         <version>1.5.1</version>
         <executions>
           <execution>
-            <phase>process-resources</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>replace</goal>
             </goals>
