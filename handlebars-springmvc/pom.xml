@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.github.jknack</groupId>
     <artifactId>handlebars.java</artifactId>
-    <version>0.5.5-SNAPSHOT</version>
+    <version>0.5.6-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -50,6 +50,19 @@
       <groupId>org.easymock</groupId>
       <artifactId>easymock</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-easymock</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 </project>
