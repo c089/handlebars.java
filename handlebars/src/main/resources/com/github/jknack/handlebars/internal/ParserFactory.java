@@ -8,12 +8,12 @@ import java.util.Map;
 import org.parboiled.Parboiled;
 
 import com.github.jknack.handlebars.Handlebars;
-import com.github.jknack.handlebars.internal.Parser;
+import com.github.jknack.handlebars.internal.OldParser;
 import com.github.jknack.handlebars.internal.ParserFactory;
 
 public class ParserFactory {
 
-  public static Parser create(final Handlebars handlebars,
+  public static OldParser create(final Handlebars handlebars,
       final String filename,
       final String startDelimiter,
       final String endDelimiter) {
@@ -21,12 +21,12 @@ public class ParserFactory {
         startDelimiter, endDelimiter, new LinkedList<Stacktrace>());
   }
 
-  public static Parser create(final Handlebars handlebars,
+  public static OldParser create(final Handlebars handlebars,
       final String filename, final Map<String, Partial> partials,
       final String startDelimiter,
       final String endDelimiter,
       final LinkedList<Stacktrace> stacktrace) {
-    return new Parser$$parboiled(handlebars, filename,
+    return new OldParser$$parboiled(handlebars, filename,
           partials, startDelimiter, endDelimiter, stacktrace);
   }
 }

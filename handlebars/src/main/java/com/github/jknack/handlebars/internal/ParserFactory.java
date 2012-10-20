@@ -31,18 +31,24 @@ import com.github.jknack.handlebars.Handlebars;
  * @author edgar.espina
  * @since 0.4.1
  */
-public class ParserFactory {
+public final class ParserFactory {
 
   /**
-   * Creates a new {@link Parser}.
+   * No public constructor.
+   */
+  private ParserFactory() {
+  }
+
+  /**
+   * Creates a new {@link OldParser}.
    *
    * @param handlebars The parser owner.
    * @param filename The file's name.
    * @param startDelimiter The start delimiter.
    * @param endDelimiter The end delimiter.
-   * @return A new {@link Parser}.
+   * @return A new {@link OldParser}.
    */
-  public static Parser create(final Handlebars handlebars,
+  public static OldParser create(final Handlebars handlebars,
       final String filename,
       final String startDelimiter,
       final String endDelimiter) {
@@ -51,7 +57,7 @@ public class ParserFactory {
   }
 
   /**
-   * Creates a new {@link Parser}.
+   * Creates a new {@link OldParser}.
    *
    * @param handlebars The parser owner.
    * @param filename The file's name.
@@ -59,14 +65,14 @@ public class ParserFactory {
    * @param startDelimiter The start delimiter.
    * @param endDelimiter The end delimiter.
    * @param stacktrace The stack-trace.
-   * @return A new {@link Parser}.
+   * @return A new {@link OldParser}.
    */
-  public static Parser create(final Handlebars handlebars,
+  public static OldParser create(final Handlebars handlebars,
       final String filename, final Map<String, Partial> partials,
       final String startDelimiter,
       final String endDelimiter,
       final LinkedList<Stacktrace> stacktrace) {
-    return Parboiled.createParser(Parser.class, handlebars, filename, partials,
-        startDelimiter, endDelimiter, stacktrace);
+    return Parboiled.createParser(OldParser.class, handlebars, filename,
+        partials, startDelimiter, endDelimiter, stacktrace);
   }
 }

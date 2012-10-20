@@ -21,7 +21,6 @@
     <module>handlebars-humanize</module>
     <module>handlebars-proto</module>
     <module>handlebars-parboiled-processor</module>
-    <module>handlebars-antlr3</module>
   </modules>
 
   <licenses>
@@ -227,7 +226,7 @@
           <consoleOutput>true</consoleOutput>
           <configLocation>checkstyle.xml</configLocation>
           <failsOnError>true</failsOnError>
-          <excludes>**/Parser*,**/Parboiled*,**/HbsServer*</excludes>
+          <excludes>**/OldParser*,**/Parboiled*,**/HbsServer*</excludes>
         </configuration>
         <executions>
           <execution>

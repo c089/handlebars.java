@@ -64,7 +64,7 @@ import com.github.jknack.handlebars.internal.Variable.Type;
  * @author edgar.espina
  * @since 0.1.0
  */
-public class Parser extends BaseParser<BaseTemplate> {
+public class OldParser extends BaseParser<BaseTemplate> {
 
   static class Token {
     public String text;
@@ -208,7 +208,7 @@ public class Parser extends BaseParser<BaseTemplate> {
 
   protected int noffset = 0;
 
-  Parser(final Handlebars handlebars, final String filename,
+  OldParser(final Handlebars handlebars, final String filename,
       final Map<String, Partial> partials, final String startDelimiter,
       final String endDelimiter, final LinkedList<Stacktrace> stacktrace) {
     this.handlebars = handlebars;
@@ -452,7 +452,7 @@ public class Parser extends BaseParser<BaseTemplate> {
                     new Stacktrace(pos.line, pos.column, filename);
                 stacktraceList.addFirst(stacktrace);
                 String input = loader.loadAsString(URI.create(uri));
-                Parser parser =
+                OldParser parser =
                     ParserFactory.create(handlebars, uri, partials,
                         startDelimiter, endDelimiter, stacktraceList);
                 // Avoid stack overflow exceptions

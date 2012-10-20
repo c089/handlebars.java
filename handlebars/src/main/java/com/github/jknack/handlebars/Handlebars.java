@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.antlr.runtime.RecognitionException;
 import org.slf4j.Logger;
 
 import com.github.jknack.handlebars.helper.BlockHelper;
@@ -34,7 +35,7 @@ import com.github.jknack.handlebars.helper.IfHelper;
 import com.github.jknack.handlebars.helper.PartialHelper;
 import com.github.jknack.handlebars.helper.UnlessHelper;
 import com.github.jknack.handlebars.helper.WithHelper;
-import com.github.jknack.handlebars.internal.ParserFactory;
+import com.github.jknack.handlebars.internal.HbsParserFactory;
 import com.github.jknack.handlebars.io.ClassTemplateLoader;
 
 /**
@@ -389,9 +390,13 @@ public class Handlebars {
     Template template = cache.get(key);
     if (template == null) {
       debug("Key not found: %s", key);
-      template =
-          ParserFactory.create(this, filename, startDelimiter, endDelimiter)
-              .parse(input);
+      try {
+      template = HbsParserFactory.create(this, filename, input).template();
+      } catch(RecognitionException ex) {
+        throw new IOException(ex);
+      }
+//          ParserFactory.create(this, filename, startDelimiter, endDelimiter)
+//              .parse(input);
       cache.put(key, template);
       debug("Key saved: %s", key);
     }

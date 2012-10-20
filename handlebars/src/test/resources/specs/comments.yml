@@ -33,6 +33,10 @@ tests:
       End.
     expected: |
       Begin.
+      
+      End.
+    mustache: |
+      Begin.
       End.
 
   - name: Indented Standalone
@@ -44,25 +48,32 @@ tests:
       End.
     expected: |
       Begin.
+        
+      End.
+    mustache: |
+      Begin.
       End.
 
   - name: Standalone Line Endings
     desc: '"\r\n" should be considered a newline for standalone tags.'
     data: { }
     template: "|\r\n{{! Standalone Comment }}\r\n|"
-    expected: "|\r\n|"
+    expected: "|\r\n\r\n|"
+    mustache: "|\r\n|"
 
   - name: Standalone Without Previous Line
     desc: Standalone tags should not require a newline to precede them.
     data: { }
     template: "  {{! I'm Still Standalone }}\n!"
-    expected: "!"
+    expected: "  \n!"
+    mustache: "!"
 
   - name: Standalone Without Newline
     desc: Standalone tags should not require a newline to follow them.
     data: { }
     template: "!\n  {{! I'm Still Standalone }}"
-    expected: "!\n"
+    expected: "!\n  "
+    mustache: "!\n"
 
   - name: Multiline Standalone
     desc: All standalone comment lines should be removed.
@@ -74,6 +85,10 @@ tests:
       }}
       End.
     expected: |
+      Begin.
+      
+      End.
+    mustache: |
       Begin.
       End.
 
@@ -87,6 +102,10 @@ tests:
         }}
       End.
     expected: |
+      Begin.
+        
+      End.
+    mustache: |
       Begin.
       End.
 

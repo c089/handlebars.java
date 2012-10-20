@@ -34,7 +34,7 @@ public class ParboiledAgent {
 
     final String actionClass = INTERNAL_PATH + "/Action$";
     System.out.println("Action class pattern: " + actionClass);
-    final String parserClass = INTERNAL_PATH + "/Parser$$";
+    final String parserClass = INTERNAL_PATH + "/OldParser$$";
     System.out.println("Parser class pattern: " + parserClass);
     instrumentation.addTransformer(new ClassFileTransformer() {
       @Override
