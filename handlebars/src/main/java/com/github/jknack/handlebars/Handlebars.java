@@ -182,6 +182,9 @@ public class Handlebars {
       if (value instanceof Collection) {
         return ((Collection) value).size() == 0;
       }
+      if (value instanceof Map) {
+        return ((Map) value).size() == 0;
+      }
       if (value instanceof Iterable) {
         return !((Iterable) value).iterator().hasNext();
       }

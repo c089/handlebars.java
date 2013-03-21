@@ -17,6 +17,8 @@ import static java.util.Arrays.asList;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -43,6 +45,13 @@ public class IfBlockTest extends AbstractTest {
     shouldCompileTo("{{#if value}}true{{else}}false{{/if}}", $("value", asList("0")), "true");
     shouldCompileTo("{{#value}}true{{^}}false{{/value}}", $("value", asList("0")), "true");
     shouldCompileTo("{{^value}}false{{/value}}", $("value", asList(0)), "");
+
+    // map with one entry
+    Map<String,String> map = new HashMap<String,String>() {{ put("x", "y"); }};
+    Hash hash = $("value", map);
+    shouldCompileTo("{{#if value}}true{{else}}false{{/if}}", hash, "true");
+    shouldCompileTo("{{#value}}true{{^}}false{{/value}}", hash, "true");
+    shouldCompileTo("{{^value}}false{{/value}}", hash, "");
   }
 
   @Test
@@ -68,6 +77,12 @@ public class IfBlockTest extends AbstractTest {
     shouldCompileTo("{{#value}}true{{^}}false{{/value}}", $("value", Collections.emptyList()),
         "false");
     shouldCompileTo("{{^value}}false{{/value}}", $("value", Collections.emptyList()), "false");
-  }
+
+    // empty map
+    Map<Object, Object> emptyMap = Collections.emptyMap();
+    Hash hash = $("value", emptyMap);
+    shouldCompileTo("{{#if value}}true{{else}}false{{/if}}", hash, "false");
+    shouldCompileTo("{{#value}}true{{^}}false{{/value}}", hash, "false");
+    shouldCompileTo("{{^value}}false{{/value}}", hash, "false"); }
 
 }
